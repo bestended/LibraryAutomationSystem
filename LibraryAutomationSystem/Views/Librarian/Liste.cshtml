@@ -1,0 +1,58 @@
+﻿@model IEnumerable<LibraryAutomationSystem.Models.LibrariansSet>
+
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kütüphane Görevli Listesi</h2>
+
+<p>
+    @Html.ActionLink("Ekle", "LibrarianAU", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LibrarianName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LibrarianPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LibrarianAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LibrarianCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BranchId)
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibrarianName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibrarianPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibrarianAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibrarianCountry)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BranchId)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "LibrarianAU", new { id = item.LibrarianId }) |
+                @Html.ActionLink("Sil", "Sil", new { id = item.LibrarianId })
+            </td>
+        </tr>
+    }
+
+</table>

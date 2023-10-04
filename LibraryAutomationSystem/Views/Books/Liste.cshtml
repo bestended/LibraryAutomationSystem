@@ -1,0 +1,78 @@
+﻿@model IEnumerable<LibraryAutomationSystem.Models.BooksSet>
+
+@{
+    
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>Kitap Listesi</h2>
+
+    <div>
+        @Html.ActionLink("Kitap Ekle", "BookAU", null,new { @class = "btn btn-primary" })
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookAuthor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Translator)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PageCount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReaderId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LibrarianId)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookAuthor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publisher)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Translator)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PageCount)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReaderId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LibrarianId)
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle", "BookAU", new { id = item.BookId }) |
+                    @Html.ActionLink("Sil", "Sil", new { id = item.BookId })
+                </td>
+            </tr>
+        }
+
+    </table>

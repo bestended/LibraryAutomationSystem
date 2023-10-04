@@ -1,0 +1,76 @@
+﻿@model IEnumerable<LibraryAutomationSystem.Models.ReadersSet>
+
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Okuyucu Listesi</h2>
+<p>
+    @Html.ActionLink("Ekle", "ReadersAU", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReaderName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReaderLastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReaderPhone)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ReaderGender)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.TakingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GivingDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReaderName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReaderLastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReaderPhone)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ReaderGender)
+                </td>*@
+
+            <td>
+                @if (item.ReaderGender == true)
+                {
+                    <span>Erkek</span>
+                }
+                else
+                {
+                    <span>Kadın</span>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TakingDate.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GivingDate.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "ReadersAU", new { id = item.ReaderId }) |
+                @Html.ActionLink("Sil", "Sil", new { id = item.ReaderId })
+            </td>
+        </tr>
+    }
+
+</table>
